@@ -5,8 +5,8 @@ metadata:
   namespace: bankapp-namespace
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"  # Force HTTPS
-    cert-manager.io/cluster-issuer: letsencrypt-prod  # Use Let's Encrypt
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-set-headers: "ingress-headers"
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/affinity: cookie
@@ -36,5 +36,6 @@ spec:
             name: nginx-service
             port:
               number: 80     
+
 
 
