@@ -13,10 +13,6 @@ metadata:
     nginx.ingress.kubernetes.io/session-cookie-name: bankapp_session
     nginx.ingress.kubernetes.io/session-cookie-hash: sha1
 spec:
-  tls:
-  - hosts:
-    - megaproject.letsdeployit.com
-    secretName: bankapp-tls-secret
   ingressClassName: nginx
   rules:
   - host: "megaproject.letsdeployit.com"
@@ -36,3 +32,4 @@ spec:
             name: nginx-service
             port:
               number: 80     
+
