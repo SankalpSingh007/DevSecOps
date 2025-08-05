@@ -6,7 +6,7 @@ metadata:
   labels:
     app: bankapp
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: bankapp
   ports:
@@ -14,5 +14,6 @@ spec:
     port: 8080
     targetPort: 8080
     # nodePort: 30080
+
 
 
