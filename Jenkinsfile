@@ -7,9 +7,9 @@ pipeline {
     agent any
     environment {
         SONAR_HOME = tool "Sonar"
-        DOCKER_IMAGE = "bankapp"
-        GIT_REPO = "https://github.com/Amitabh-DevOps/DevOps-mega-project.git"
-        GIT_BRANCH = "project"
+        DOCKER_IMAGE = "ditiss-project"
+        GIT_REPO = "https://github.com/SankalpSingh007/DevSecOps.git"
+        GIT_BRANCH = "main"
     }
     stages {
         stage("Clean Workspace") {
@@ -20,13 +20,13 @@ pipeline {
         stage("Code Clone") {
             steps {
                 script {
-                    code_checkout("https://github.com/Amitabh-DevOps/DevOps-mega-project.git", "project")
+                    code_checkout("https://github.com/SankalpSingh007/DevSecOps.git", "main")
                 }
             }
         }
         stage("SonarQube Quality Analysis") {
             steps {
-                sonarqube_analysis('Sonar', 'bankapp', 'bankapp')
+                sonarqube_analysis('Sonar', 'ditiss-project', 'ditiss-project')
             }
         }
         // stage("OWASP Dependency Check") {
@@ -46,12 +46,12 @@ pipeline {
         }
         stage("Docker Build") {
             steps {
-                docker_build("bankapp", "${params.DOCKER_TAG}", "amitabhdevops")
+                docker_build("ditiss-project", "${params.DOCKER_TAG}", "sankalp464")
             }
         }
         stage("Push to Docker Hub") {
             steps {
-                docker_push("bankapp", "${params.DOCKER_TAG}", "amitabhdevops")
+                docker_push("ditiss-project", "${params.DOCKER_TAG}", "sankalp464")
             }
         }
     }
@@ -92,7 +92,7 @@ pipeline {
                         </p>
                     </div>
                 """,
-                to: "amitabhdevops2024@gmail.com",
+                to: "sankalpisonn@gmail.com",
                 from: "jenkins@example.com",
                 mimeType: 'text/html',
                 attachmentsPattern: '**/table-report.html'  // This will pick up the report from the workspace
@@ -134,7 +134,7 @@ pipeline {
                         </p>
                     </div>
                 """,
-                to: "amitabhdevops2024@gmail.com",
+                to: "sankalpisonn@gmail.com",
                 from: "jenkins@example.com",
                 mimeType: 'text/html',
                 attachmentsPattern: '**/table-report.html'  // This will pick up the report from the workspace
