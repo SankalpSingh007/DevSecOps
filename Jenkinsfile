@@ -1,4 +1,4 @@
-@Library('Shared') _  // Referencing your shared library
+@Library('Shared@main') _  // Referencing your shared library
 parameters {
     string(name: 'DOCKER_TAG', defaultValue: 'v1', description: 'Setting docker image for latest push')
 }
