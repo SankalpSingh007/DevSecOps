@@ -26,7 +26,7 @@ pipeline {
         }
         stage("SonarQube Quality Analysis") {
             steps {
-                sonarqube_analysis('Sonar', 'ditiss-project', 'ditiss-project')
+                sonarqube_analysis('Sonar', 'squ_4fb9a88e212fecb7008078b0ef5d5d505cf37989', 'ditiss-project')
             }
         }
         // stage("OWASP Dependency Check") {
