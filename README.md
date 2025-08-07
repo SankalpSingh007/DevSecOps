@@ -250,6 +250,8 @@ Once installed, verify the installation using:
 ```bash
 argocd version
 ```
+<img width="1852" height="832" alt="added git repo secessfully" src="https://github.com/user-attachments/assets/8d09e6c9-0905-41cb-bd6b-09b69fd80c58" />
+<img width="1918" height="910" alt="added git repo secessfully-2" src="https://github.com/user-attachments/assets/dea37b81-31fb-4860-9946-9dfb2bc1ce0c" />
 
 ---
 
@@ -297,6 +299,7 @@ With the NodePort and the worker node’s public IP, access the ArgoCD web UI:
 http://<worker-node-public-ip>:<node-port>
 ```
 
+<img width="1920" height="1080" alt="agrocd ui" src="https://github.com/user-attachments/assets/cfe7d3de-4fa1-4259-b1fb-fe7a7f1eda23" />
 
 For the initial login:
 
@@ -377,6 +380,15 @@ To integrate your Git repository with ArgoCD:
     
 
 Once connected, your repository will be ready for deploying applications via ArgoCD.
+<img width="1850" height="842" alt="adding repo in agrocd-1" src="https://github.com/user-attachments/assets/94a7fedc-b137-4d08-a4ac-36484466f34f" />
+
+<img width="1847" height="823" alt="adding repo in agrocd-2" src="https://github.com/user-attachments/assets/9c66755f-0baf-40a9-bc7c-a9c3e621b996" />
+
+<img width="1852" height="832" alt="added git repo secessfully" src="https://github.com/user-attachments/assets/a232b26c-d5cc-448d-9f55-a61a037f9226" />
+
+<img width="1918" height="910" alt="added git repo secessfully-2" src="https://github.com/user-attachments/assets/95ddfd1a-5d46-413c-bdbe-b8f457b0540c" />
+
+
 
 ---
 
@@ -493,6 +505,15 @@ Once installed, Cert-Manager will be responsible for automatically issuing and r
 
 Click **Create** to finish the setup and deploy your application.
 
+<img width="1915" height="921" alt="creating application in agrocd" src="https://github.com/user-attachments/assets/3fb2cc20-6b47-4a03-af7a-d290df6fcbf4" />
+
+<img width="1918" height="956" alt="creating application in agrocd-2" src="https://github.com/user-attachments/assets/b1ade130-3669-4e8f-a7dd-24572d072cdb" />
+
+<img width="1918" height="941" alt="application created sucessfully" src="https://github.com/user-attachments/assets/f6e35555-718f-45e7-93a6-d05631e412b2" />
+
+<img width="1850" height="838" alt="application-1" src="https://github.com/user-attachments/assets/1ceda823-c9ff-431f-99d1-955287a75d0b" />
+
+<img width="1912" height="918" alt="application-2" src="https://github.com/user-attachments/assets/c8ef7fc6-2456-451b-81c8-1d466bad0a9b" />
 
 ---
 
@@ -527,6 +548,7 @@ If you don't have a domain, you can expose the service using **NodePort**.
 4. Now, access your application in the browser using the URL format: `http://<worker_node_public_ip>:<nodeport>`
 
     
+<img width="1851" height="872" alt="bankapp-deploy" src="https://github.com/user-attachments/assets/74d2ce3a-8d39-4900-a7a5-70d708836896" />
 
 ---
 
@@ -543,6 +565,11 @@ http://<master-node-public-ip>:8080
 ```
 
 Complete the Jenkins setup by following the on-screen instructions to configure the admin username and password.
+
+<img width="1855" height="897" alt="jenkins-1" src="https://github.com/user-attachments/assets/7dd8b281-bb9e-4b81-9262-b4f46b6e1bbf" />
+
+<img width="1851" height="870" alt="jenkins-3" src="https://github.com/user-attachments/assets/d9cf5264-9265-4234-a4b2-9186191ce3e5" />
+
 
 ---
 
@@ -575,6 +602,8 @@ To integrate Jenkins with Docker, you need to install **Docker** and add both th
 
 ### 3\. Add DockerHub Credentials
 
+<img width="1812" height="845" alt="jenkins-7-dockerhub" src="https://github.com/user-attachments/assets/385e1932-f5f4-42d0-ae2c-55359ed1b7b9" />
+
 ---
 
 ### 4\. Add GitHub Credentials
@@ -603,9 +632,43 @@ Once everything is set up, trigger the pipeline build by selecting **Build with 
 * Ensure that the **bankapp-deployment** is using the correct image tag from **Docker Hub**. take a reference of below image
 
 
+<img width="1843" height="867" alt="jenkins-10-creating-pipeline" src="https://github.com/user-attachments/assets/1f28a628-b2d6-49ea-a3da-ccad1df42d69" />
+
+<img width="1861" height="892" alt="jenkins-10-creating-pipeline-2" src="https://github.com/user-attachments/assets/64683429-228d-494f-8d80-45adefe1347b" />
+
+<img width="1848" height="876" alt="jenkins-10-creating-pipeline-3" src="https://github.com/user-attachments/assets/ed16cc44-2229-4f76-97d9-ad04db228e57" />
+
+<img width="1852" height="872" alt="jenkins-10-creating-pipeline-4" src="https://github.com/user-attachments/assets/217959cc-538f-449c-9f18-fa950b6accde" />
+
+<img width="1853" height="842" alt="jenkins-pipeline-created" src="https://github.com/user-attachments/assets/0b1bdd1f-8c9a-4711-8e76-673186324d70" />
+
+
 ---
 ## Install and configure SonarQube (Master machine)
     docker run -itd --name SonarQube-Server -p 9000:9000 sonarqube:lts-community
+
+<img width="1852" height="862" alt="sonarqube-1" src="https://github.com/user-attachments/assets/72dc3e3d-04e7-4da6-8656-006922795903" />
+
+<img width="1857" height="877" alt="sonarqube-2" src="https://github.com/user-attachments/assets/23b431f8-ba50-4615-976c-371174fa0c2d" />
+
+<img width="1841" height="863" alt="sonarqube-3" src="https://github.com/user-attachments/assets/3ac6fe6e-0c16-45a6-9487-441d2f20ae9b" />
+
+<img width="1848" height="856" alt="sonarqube-4" src="https://github.com/user-attachments/assets/e15edc8f-de3f-43a1-8312-c8d1df9c42df" />
+
+<img width="1852" height="872" alt="sonarqube-5" src="https://github.com/user-attachments/assets/094ad08d-a68c-45a3-bfbb-ef4727ce8fa2" />
+
+<img width="1856" height="850" alt="sonarqube-6" src="https://github.com/user-attachments/assets/b140136f-97be-4815-9ccc-8ce4d1e55bf4" />
+
+<img width="1845" height="865" alt="sonarqube-7" src="https://github.com/user-attachments/assets/a5c0551d-3b96-4b2a-8e10-b1e62ecb4249" />
+
+<img width="1790" height="795" alt="sonarqube-9" src="https://github.com/user-attachments/assets/37a32c2f-0b08-4ec1-b4d5-83b052cd39bc" />
+
+<img width="1848" height="872" alt="sonarqube-10" src="https://github.com/user-attachments/assets/3a8b5b1a-cb47-4a19-aae6-e4eeabc6d686" />
+
+<img width="1850" height="867" alt="sonarqube-webhook" src="https://github.com/user-attachments/assets/45a7f45c-77f1-4de5-be34-d0807cb20f6a" />
+
+<img width="1917" height="912" alt="webhook added sucessfully" src="https://github.com/user-attachments/assets/b3229be6-4c3a-4804-aa83-175ae64a96a9" />
+
 
 ## Install Trivy (Jenkins Worker)
    sudo apt-get install wget apt-transport-https gnupg lsb-release -y
@@ -688,6 +751,14 @@ kubectl get secret --namespace prometheus stable-grafana -o jsonpath="{.data.adm
 
 Now that **Prometheus** and **Grafana** are set up, you can use **Grafana** to monitor your application metrics. Grafana will pull metrics from **Prometheus**, and you can create dashboards to visualize various aspects of your application’s performance.
 
+<img width="1918" height="938" alt="grafana" src="https://github.com/user-attachments/assets/66607874-d793-41b6-90aa-ee806981cae2" />
+
+<img width="1853" height="861" alt="grafana-" src="https://github.com/user-attachments/assets/7731b5cc-95e2-468f-9aec-3278eee933d5" />
+
+<img width="1852" height="863" alt="grafana-1" src="https://github.com/user-attachments/assets/eaee187b-04b0-401e-bd70-21aed3511a15" />
+
+<img width="1856" height="871" alt="grafana-2" src="https://github.com/user-attachments/assets/e3b6fc62-bc4f-47f4-9d65-5a0035669f5c" />
+
 ---
 
 ## Conclusion
@@ -695,6 +766,7 @@ Now that **Prometheus** and **Grafana** are set up, you can use **Grafana** to m
 In conclusion, your DevSecOps Mega Project showcases a well-structured and automated pipeline using industry-standard tools. You've effectively integrated AWS, Docker, Kubernetes (EKS), Helm, and ArgoCD for deployment automation. By leveraging Terraform for infrastructure as code and implementing security best practices like IAM roles, SSL certificates, and Horizontal Pod Autoscaling, your setup ensures a secure, scalable, and efficient environment. The project demonstrates strong knowledge in cloud infrastructure, containerization, and CI/CD practices, positioning you well for real-world DevSecOps implementation.
 
 ---
+
 
 
 
