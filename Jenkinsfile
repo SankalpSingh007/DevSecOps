@@ -6,7 +6,7 @@ parameters {
 pipeline {
     agent any
     environment {
-        SONAR_HOME = tool "Sonar"
+        SONAR_HOME = tool "sonar"
         DOCKER_IMAGE = "ditiss-project"
         GIT_REPO = "https://github.com/SankalpSingh007/DevSecOps.git"
         GIT_BRANCH = "main"
@@ -26,7 +26,7 @@ pipeline {
         }
         stage("SonarQube Quality Analysis") {
             steps {
-                sonarqube_analysis('Sonar', 'bankapp', 'bankapp')
+                sonarqube_analysis('sonar', 'bankapp', 'bankapp')
             }
         }
         // stage("OWASP Dependency Check") {
