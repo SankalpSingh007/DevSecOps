@@ -4,7 +4,7 @@
 - This is a multi-tier bank an application written in Java (Springboot).
 
   
-## Step 1: Create an IAM User with Administrator Permissions
+## Step 1: Creating an IAM User with Administrator Permissions
 
 1. **Login to AWS Console:** Open the [AWS Management Console](https://aws.amazon.com/console/).
     
@@ -33,15 +33,13 @@
 
 ### Adding Linux Terminal in VSCode (Windows Users)
 
-If you are on Windows, refer to this [guide](https://amitabhdevops.hashnode.dev/a-step-by-step-guide-to-adding-ubuntu-wsl-in-vs-code-terminal) to integrate an Ubuntu terminal in VSCode for seamless project execution.
-
 ---
 
 ## Step 3: Fork and Clone the Project Repository
 
 1. **Fork the Repository:**
     
-    * Open the repository [DevOps Mega Project](https://github.com/Amitabh-DevOps/DevOps-mega-project) on GitHub.
+    * Open the repository on GitHub.
         
     * Click **Fork** to create a copy in your GitHub account.
         
@@ -64,7 +62,7 @@ If you are on Windows, refer to this [guide](https://amitabhdevops.hashnode.dev/
 
 ---
 
-## Step 4: Install AWS CLI and Configure It
+## Step 4: Installing AWS CLI and Configure It
 
 1. **Install AWS CLI:**
     
@@ -86,7 +84,7 @@ If you are on Windows, refer to this [guide](https://amitabhdevops.hashnode.dev/
 
 ---
 
-## Step 5: Build and Push Docker Image
+## Step 5: Building and Pushing Docker Image
 
 1. **Build the Docker Image:**
     
@@ -113,7 +111,7 @@ If you are on Windows, refer to this [guide](https://amitabhdevops.hashnode.dev/
 
 ---
 
-## Step 6: Set Up Infrastructure with Terraform
+## Step 6: Setting Up Infrastructure with Terraform
 
 1. **Generate SSH Key:**
     
@@ -153,8 +151,6 @@ If you are on Windows, refer to this [guide](https://amitabhdevops.hashnode.dev/
 ---
 
 ## Step 7: Install Essential DevOps Tools on created Instance.
-
-Follow this [guide](https://amitabhdevops.hashnode.dev/how-to-install-essential-devops-tools-on-ubuntulinux) to install:
 
 * AWS CLI
     
@@ -215,7 +211,7 @@ sudo mv /tmp/eksctl /usr/local/bin
 
 ---
 
-## Step 9: Set Up ArgoCD
+## Step 9: Setting Up ArgoCD
 
 #### Step 1: Create a Namespace for ArgoCD
 
@@ -227,7 +223,7 @@ kubectl create ns argocd
 
 ---
 
-#### Step 2: Install ArgoCD
+#### Step 2: Installing ArgoCD
 
 Use the official installation manifest from ArgoCD’s GitHub repository to deploy it to your cluster.
 
@@ -239,7 +235,7 @@ This command installs all required ArgoCD components in the `argocd` namespace.
 
 ---
 
-#### Step 3: Install ArgoCD CLI
+#### Step 3: Installing ArgoCD CLI
 
 To interact with the ArgoCD server from your local machine or a terminal, install the ArgoCD command-line interface (CLI).
 
@@ -300,8 +296,6 @@ With the NodePort and the worker node’s public IP, access the ArgoCD web UI:
 ```bash
 http://<worker-node-public-ip>:<node-port>
 ```
-
-![image](https://github.com/user-attachments/assets/32222a1f-3aea-450b-a7e5-0f44b34702ed)
 
 
 For the initial login:
@@ -365,7 +359,7 @@ For example:
 argocd cluster add mega-project-user@bankapp-cluster.eu-west-1.eksctl.io --name bankapp-cluster
 ```
 
-#### Step 11: Add Project Repository in ArgoCD UI
+#### Step 11: Adding Project Repository in ArgoCD UI
 
 To integrate your Git repository with ArgoCD:
 
@@ -407,7 +401,7 @@ After running the script, Helm will be installed, and you can start using it to 
 
 ---
 
-### 2\. Install Ingress Controller Using Helm
+### 2\. Installing Ingress Controller Using Helm
 
 An **Ingress Controller** is necessary to manage external HTTP/HTTPS access to your services in Kubernetes. In this step, we will install the NGINX Ingress Controller using Helm.
 
@@ -445,7 +439,7 @@ Once installed, the metrics-server will start collecting data from your Kubernet
 
 ### 4\. Install Cert-Manager for SSL/TLS Certificates
 
-For securing your application with **HTTPS** using your custom domain name, you need to generate SSL/TLS certificates. **Cert-Manager** is a Kubernetes tool that automates the management and issuance of these certificates.
+For securing application with **HTTPS** using custom domain name, you need to generate SSL/TLS certificates. **Cert-Manager** is a Kubernetes tool that automates the management and issuance of these certificates.
 
 To install Cert-Manager, use the following command:
 
@@ -499,11 +493,6 @@ Once installed, Cert-Manager will be responsible for automatically issuing and r
 
 Click **Create** to finish the setup and deploy your application.
 
-![image](https://github.com/user-attachments/assets/c264ccbc-9ba7-40e1-8925-47e48ec65b26)
-
-
-![image](https://github.com/user-attachments/assets/dbabd258-d314-4648-b17a-f17bdb1ec55d)
-
 
 ---
 
@@ -513,33 +502,7 @@ In this step, we will walk through two options to expose your application to the
 
 ---
 
-### Option 1: Expose via ALB and CNAME
-
-1. Run the following command to get the **ALB External-IP** of the `ingress-nginx-controller`:
-    
-    ```bash
-    kubectl get svc -n ingress-nginx
-    ```
-    
-2. Copy the **External-IP** from the output and create a **CNAME record** on your domain. For example, use [`amitabh.letsdeployit.com`](http://amitabh.letsdeployit.com) as your domain, and replace it in the `bankapp-ingress.yml` file with your domain name, take a reference of below image:
-    
-    1. ![image](https://github.com/user-attachments/assets/117c42ad-025c-4ad7-af88-064ddbfc86b4)
-
-        
-3. After updating the `bankapp-ingress.yml` file, sync the application in **ArgoCD**.
-    
-4. Once synchronized, open your browser and access the application via your domain (e.g., [`amitabh.letsdeployit.com`](http://amitabh.letsdeployit.com)).
-    
-    1. ![image](https://github.com/user-attachments/assets/8c7076dc-2908-45a9-a920-86ff281e2a4b)
-
-        
-    2. ![image](https://github.com/user-attachments/assets/ab5e3652-5296-4744-bc38-1ec2fd7a32a7)
-
-        
-
----
-
-### Option 2: Expose via NodePort
+###  Exposing via NodePort
 
 If you don't have a domain, you can expose the service using **NodePort**.
 
@@ -561,12 +524,7 @@ If you don't have a domain, you can expose the service using **NodePort**.
     kubectl get svc -n bankapp-namespace
     ```
     
-4. Now, access your application in the browser using the URL format: `http://<worker_node_public_ip>:<nodeport>`.
-    
-    ![image](https://github.com/user-attachments/assets/1414aff3-7137-4c3c-b043-f63d964eee54)
-
-    
-    ![image](https://github.com/user-attachments/assets/bc9fff7e-5aee-40f5-963f-5683e9dc1a8f)
+4. Now, access your application in the browser using the URL format: `http://<worker_node_public_ip>:<nodeport>`
 
     
 
@@ -617,63 +575,50 @@ To integrate Jenkins with Docker, you need to install **Docker** and add both th
 
 ### 3\. Add DockerHub Credentials
 
-Add your **DockerHub** credentials to Jenkins. You can refer to this blog for detailed steps: [Django Notes App using Jenkins CI/CD](https://amitabhdevops.hashnode.dev/django-notes-app-using-jenkins-cicd#heading-step-12-set-up-docker-hub-credentials-in-jenkins).
-
 ---
 
 ### 4\. Add GitHub Credentials
 
-Add **GitHub** credentials to Jenkins as well to enable seamless integration with your GitHub repository.
+Add **GitHub** credentials to Jenkins as well to enable seamless integration with GitHub repository.
 
 ---
 
-### 5\. Set Up Webhook for Continuous Integration
+### 5\. Setting Up Webhook for Continuous Integration
 
-To automatically trigger Jenkins builds on changes in your GitHub repository, set up a webhook. Follow the instructions in this blog: [Set Up Webhooks for Automatic Deployment](https://amitabhdevops.hashnode.dev/django-notes-app-using-jenkins-cicd#heading-step-13-set-up-webhooks-for-automatic-deployment).
-
+To automatically trigger Jenkins builds on changes in your GitHub repository, set up a webhook.
 ---
 
 ### 6\. Create a Jenkins Pipeline Job
-
-Create a **Jenkins Pipeline** job using the reference in this blog: [Create a Jenkins Pipeline Job](https://amitabhdevops.hashnode.dev/django-notes-app-using-jenkins-cicd#heading-step-10-create-a-jenkins-pipeline-job).
 
 While creating the job, ensure that you check the box for **This project is parameterized** to allow dynamic configuration during the build.
 
 ---
 
-### 7\. Build the Pipeline
+### 7\. Building the Pipeline
 
 Once everything is set up, trigger the pipeline build by selecting **Build with Parameters**. Enter the required parameters and start the build process. Monitor the build logs for any errors. If any issues arise, resolve them.
 
 * Check the **Docker Hub** for the tagged images after the build.
     
 * Ensure that the **bankapp-deployment** is using the correct image tag from **Docker Hub**. take a reference of below image
-    
-    ![image](https://github.com/user-attachments/assets/4600f18f-c57d-4e40-b517-4d9507f09a0b)
-
-    
-    
-* ![image](https://github.com/user-attachments/assets/c1db5a21-1f22-49c6-b674-5604efb8dc2f)
-
-    
-
-![image](https://github.com/user-attachments/assets/cfd5988d-471d-481d-9bf9-f0581c4b7d98)
-
-
-![image](https://github.com/user-attachments/assets/b0c815ec-9960-443d-95e7-69511b462ee6)
-
-
-![image](https://github.com/user-attachments/assets/4135926b-b89b-4202-813c-3ecf387e0475)
-
-
-![image](https://github.com/user-attachments/assets/fe09aa64-a777-4a8e-9da4-b999a3734119)
 
 
 ---
+## Install and configure SonarQube (Master machine)
+    docker run -itd --name SonarQube-Server -p 9000:9000 sonarqube:lts-community
+
+## Install Trivy (Jenkins Worker)
+   sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+   wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+   echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+   sudo apt-get update -y
+   sudo apt-get install trivy -y
+
+
 
 ## Step 14: Setting Up Observability with Prometheus and Grafana
 
-### 1\. Add Prometheus Helm Repository
+### 1\. Adding Prometheus Helm Repository
 
 Start by adding the **Prometheus** Helm repository:
 
@@ -683,7 +628,7 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 
 ---
 
-### 2\. Create the Prometheus Namespace
+### 2\. Creating the Prometheus Namespace
 
 Create a dedicated namespace for Prometheus:
 
@@ -693,7 +638,7 @@ kubectl create namespace prometheus
 
 ---
 
-### 3\. Install Prometheus
+### 3\. Installing Prometheus
 
 Install the **Prometheus** and **Grafana** stack using Helm in the `prometheus` namespace:
 
@@ -713,7 +658,7 @@ kubectl get svc -n prometheus
 
 ---
 
-### 5\. Expose Grafana via NodePort
+### 5\. Exposing Grafana via NodePort
 
 Expose **Grafana** through **NodePort** by patching the service:
 
@@ -743,18 +688,6 @@ kubectl get secret --namespace prometheus stable-grafana -o jsonpath="{.data.adm
 
 Now that **Prometheus** and **Grafana** are set up, you can use **Grafana** to monitor your application metrics. Grafana will pull metrics from **Prometheus**, and you can create dashboards to visualize various aspects of your application’s performance.
 
-![image](https://github.com/user-attachments/assets/76e48681-ee88-4c10-a231-60ecbeab836c)
-
-
-![image](https://github.com/user-attachments/assets/0bea99b0-1316-4076-b823-c4dc5fb4a180)
-
-
-![image](https://github.com/user-attachments/assets/c06f10e7-9a4f-420b-8586-c172a44b1a96)
-
-
-![image](https://github.com/user-attachments/assets/e0fb4173-00aa-479d-b1ad-9d36c42c7ee4)
-
-
 ---
 
 ## Conclusion
@@ -763,69 +696,7 @@ In conclusion, your DevSecOps Mega Project showcases a well-structured and autom
 
 ---
 
-# <mark>Project ended here.</mark>
-
-below is for opensource opportunity for contrubutors.
-
----
-
-## Open Source Opportunity: Contribute and Win Free Gift Hampers from TrainWithShubham
-
-We are thrilled to announce an exciting **open-source opportunity** for contributors to this project. As a token of appreciation, contributors will receive **Free Gift Hampers** from **TrainWithShubham**. The hampers may include a variety of items to make your contribution even more rewarding.
-
-## How You Can Contribute
-
-We are looking for contributions in the following areas:
-
----
-
-### 1\. **Solve the Application Login Issue After Domain Mapping**
-
-After mapping the domain to the application, there may be issues with user login. If you have experience in troubleshooting or resolving login issues post-domain mapping, we encourage you to contribute a solution. Possible areas for improvement include authentication, DNS configurations, or session management.
-
-### Resolved:
-
-https://github.com/user-attachments/assets/4baf7031-5744-40c5-8035-10e4d1cc4457
 
 
----
 
-### 2\. **Add the Security (Sec) Part of DevSecOps to the Project**
 
-Security should be a priority for any application. By incorporating **DevSecOps** practices into the project, we can significantly improve its security. Contributions may involve:
-
-* Implementing automated security scans within the CI/CD pipeline.
-    
-* Integrating tools like **OWASP ZAP**, **Trivy**, or **SonarQube** for vulnerability assessments.
-    
-* Securing Kubernetes, Docker, and application infrastructure.
-    
-
----
-
-### 3\. **Further Improvements**
-
-We are always looking for ways to improve the project. If you have ideas for additional features or optimizations, we would love to see them:
-
-* Enhancing performance and scalability.
-    
-* Improving monitoring and logging capabilities.
-    
-* Streamlining deployment and automation processes.
-    
-* Improving user experience and interface design.
-    
-
----
-
-## How to Contribute
-
-To contribute, simply **fork the repository**, make your changes, and submit a **pull request (PR)**. If your contribution is accepted, you will receive a **Free Gift Hamper** from **TrainWithShubham** as a thank-you for your efforts.
-
----
-
-## Join the Open-Source Community
-
-We welcome all developers, whether beginners or experienced, to join the open-source community and contribute to this project. Let’s work together to make this project even better!
-
-We look forward to your innovative contributions, and remember, great work deserves great rewards!
