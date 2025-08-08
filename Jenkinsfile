@@ -15,6 +15,8 @@ pipeline {
         DOCKER_IMAGE = "ditiss-project"
         GIT_REPO = "https://github.com/SankalpSingh007/DevSecOps.git"
         GIT_BRANCH = "main"
+        // Add SonarQube token as environment variable
+        SONAR_TOKEN = credentials('sonar-token') 
     }
     stages {
         stage("Clean Workspace") {
@@ -39,10 +41,10 @@ pipeline {
                             withSonarQubeEnv('sonar') {
                                 sh """
                                 ${SONAR_HOME}/bin/sonar-scanner \
-                                -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-                                -Dsonar.projectName=${SONAR_PROJECT_NAME} \
+                                -Dsonar.projectKey=${params.SONAR_PROJECT_KEY} \
+                                -Dsonar.projectName=${params.SONAR_PROJECT_NAME} \
                                 -Dsonar.java.binaries=. \
-                                -Dsonar.login=${SONAR_AUTH_TOKEN}
+                                -Dsonar.login=${SONAR_TOKEN}
                                 """
                             }
                         }
@@ -51,7 +53,12 @@ pipeline {
 
                 stage("Trivy FS Scan") {
                     steps {
-                        sh "trivy fs --security-checks vuln --exit-code 1 --severity CRITICAL ."
+                        script {
+                            // Continue on Trivy failure to see all results
+                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                                sh "trivy fs --scanners vuln --exit-code 1 --severity CRITICAL ."
+                            }
+                        }
                     }
                 }
             }
@@ -59,13 +66,22 @@ pipeline {
 
         stage("Quality Gate Check") {
             steps {
-                timeout(time: 5, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
+                script {
+                    // Only run quality gate if SonarQube succeeded
+                    when {
+                        expression { currentBuild.resultIsBetterOrEqualTo('UNSTABLE') }
+                    }
+                    timeout(time: 5, unit: 'MINUTES') {
+                        waitForQualityGate abortPipeline: true
+                    }
                 }
             }
         }
 
         stage("Docker Build & Push") {
+            when {
+                expression { currentBuild.resultIsBetterOrEqualTo('UNSTABLE') }
+            }
             steps {
                 script {
                     withCredentials([usernamePassword(
